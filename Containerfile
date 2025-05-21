@@ -1,4 +1,4 @@
-FROM ghcr.io/charles25565/unified-bootc-images:a9
+FROM ghcr.io/charles25565/unified-bootc-images:c10s
 RUN mkdir -m 0700 -p /var/roothome
 RUN dnf install @workstation -y
 RUN dnf remove console-login-helper-messages{,profile} -y
