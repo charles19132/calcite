@@ -2,6 +2,10 @@
 
 Calcite is a simple bootc image with GNOME.
 
+## Pre-built image
+
+You can use this: [`quay.io/charles2/calcite`](https://quay.io/repository/charles2/calcite).
+
 ## Building
 
 ```bash
