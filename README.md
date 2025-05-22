@@ -17,6 +17,4 @@ sudo podman build -t calcite .
 
 ## Deploying
 
-You should be able to deploy it in most manners.
-
-However Anaconda has a chance of not working properly and the system will fail to start.
+You should be able to deploy it in any manner you like.
