@@ -8,24 +8,24 @@ This guide assumes you are already on a Fedora 40+ or CentOS Stream 10+ system. 
 
 We need both of these.
 
-```
-# dnf install lorax util-linux skopeo
+```bash
+sudo dnf install lorax util-linux skopeo
 ```
 
 ## Downloading the base ISO
 
 This will download the base ISO, which will we add the container and kickstart.
 
-```
-$ curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
+```bash
+curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
 ```
 
 ## Downloading the container
 
 This will download the container using skopeo.
 
-```
-$ skopeo copy docker://quay.io/charles2/calcite:latest oci:container
+```bash
+skopeo copy docker://quay.io/charles2/calcite:latest oci:container
 ```
 
 ## Creating the kickstart
@@ -44,8 +44,8 @@ bootc switch --mutate-in-place --transport registry quay.io/charles2/calcite:lat
 
 Now that we have everything ready, we can build the ISO image.
 
-```
-$ mkksiso -a container ks.cfg base.iso calcite.iso
+```bash
+mkksiso -a container ks.cfg base.iso calcite.iso
 ```
 
 ## Flashing the ISO
