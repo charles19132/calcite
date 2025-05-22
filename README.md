@@ -18,3 +18,5 @@ sudo podman build -t calcite .
 ## Deploying
 
 You should be able to deploy it in any manner you like.
+
+You can find an in depth installation guide using Anaconda [here](INSTALL.md).
