@@ -12,7 +12,8 @@ You can use this: [`quay.io/charles2/calcite`](https://quay.io/repository/charle
 sudo podman build -t calcite .
 ```
 
-- If you want to use a different base distro, use the `--from=` parameter and specify another bootc base image.
+> [!TIP]
+> If you want to use a different base distro, use the `--from=` parameter and specify another bootc base image.
 
 ## Deploying
 
