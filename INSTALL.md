@@ -1,4 +1,4 @@
-# Installation
+# Installation with Anaconda
 
 This guide assumes you are already on a Fedora 40+ or CentOS Stream 10+ system. Calcite itself won't work.
 
