@@ -2,14 +2,14 @@
 
 This guide assumes you are already on a Fedora 40+ or CentOS Stream 10+ system. Calcite itself won't work.
 
-## Installing mkksiso and skopeo
+## Installing mkksiso, skopeo and curl
 
-`mkksiso` is a tool used to inject kickstart files and other files into an Anaconda ISO and `skopeo` is a tool used to manage a container image remote.
+`mkksiso` is a tool used to inject kickstart files and other files into an Anaconda ISO and `skopeo` is a tool used to manage a container image remote. `curl` is a tool used for web related activities.
 
 We need both of these.
 
 ```bash
-sudo dnf install lorax util-linux skopeo
+sudo dnf install lorax util-linux skopeo curl -y
 ```
 
 ## Downloading the base ISO
@@ -30,14 +30,16 @@ skopeo copy docker://quay.io/charles2/calcite:latest oci:container
 
 ## Creating the kickstart
 
-Paste the following into a new file called `ks.cfg`.
+Run the following to create ks.cfg.
 
-```
+```bash
+cat > ks.cfg <<EOF
 ostreecontainer --url /run/install/repo/container --transport oci --no-signature-verification
 
 %post --erroronfail
 bootc switch --mutate-in-place --transport registry quay.io/charles2/calcite:latest
 %end
+EOF
 ```
 
 ## Building the ISO
@@ -56,4 +58,4 @@ You can use your favorite tool to flash the ISO we have created. If you are usin
 
 After booting the ISO, you can now install it like any other EL-like distro.
 
-Note that the packages settings will be missing.
+Note that the packages settings will be missing because `ostreecontainer` causes them to be hidden.
