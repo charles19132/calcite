@@ -15,6 +15,9 @@ sudo podman build -t calcite .
 > [!TIP]
 > If you want to use a different base distro, use the `--from=` parameter and specify another bootc base image.
 
+> [!NOTE]
+> If you are building using a RHEL image mode base image, make sure that your host is registered with `subscription-manager` before building.
+
 ## Deploying
 
 You should be able to deploy it in any manner you like.
