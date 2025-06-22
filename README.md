@@ -8,7 +8,7 @@ Calcite is a simple bootc image with GNOME.
 ## Building
 
 ```bash
-sudo podman build -t calcite .
+sudo podman build -t localhost/calcite:latest .
 ```
 
 > [!TIP]
