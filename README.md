@@ -5,10 +5,6 @@ Calcite is a simple bootc image with GNOME.
 > [!NOTE]
 > While building an image against Fedora works, we recommend using [this image](https://quay.io/repository/fedora/fedora-silverblue) instead if you choose to do so.
 
-## Pre-built image
-
-You can use this: [`quay.io/charles2/calcite`](https://quay.io/repository/charles2/calcite).
-
 ## Building
 
 ```bash
