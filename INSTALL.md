@@ -6,7 +6,7 @@ You also will already need to have a container image ready.
 
 ## Installing mkksiso, skopeo and curl
 
-`mkksiso` is a tool used to inject kickstart files and other files into an Anaconda ISO and `skopeo` is a tool used to manage a container image remote. `curl` is a tool used for web related activities.
+`mkksiso` is a tool used to inject kickstart files and other files into an Anaconda ISO. `curl` is a tool used for web related activities.
 
 We need both of these.
 
