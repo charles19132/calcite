@@ -2,6 +2,8 @@
 
 This guide assumes you are already on a Fedora 40+ or CentOS Stream 10+ system. Calcite itself won't work.
 
+You also will already need to have a container image ready.
+
 ## Installing mkksiso, skopeo and curl
 
 `mkksiso` is a tool used to inject kickstart files and other files into an Anaconda ISO and `skopeo` is a tool used to manage a container image remote. `curl` is a tool used for web related activities.
@@ -20,12 +22,12 @@ This will download the base ISO, which will we add the container and kickstart.
 curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
 ```
 
-## Downloading the container
+## Saving the container
 
-This will download the container using skopeo.
+This will save the container.
 
 ```bash
-skopeo copy docker://quay.io/charles2/calcite:latest oci:container
+podman save localhost/calcite:latest -o container --format oci-dir
 ```
 
 ## Creating the kickstart
