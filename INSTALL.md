@@ -17,7 +17,7 @@ sudo dnf install lorax util-linux skopeo curl -y
 This will download the base ISO, which will we add the container and kickstart.
 
 ```bash
-curl -o base.iso https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10-latest-x86_64-boot.iso
+curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
 ```
 
 ## Downloading the container
