@@ -9,7 +9,7 @@ This guide assumes you are already on a Fedora 40+ or EL10+ system. Calcite itse
 We need both of these.
 
 ```bash
-sudo dnf install lorax util-linux skopeo curl --allow-erasing -y
+sudo dnf install lorax util-linux skopeo curl --allowerasing -y
 ```
 
 ## Downloading the base ISO
