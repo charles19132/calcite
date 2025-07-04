@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - Containerfile
+      - .github/workflows/build.yml
+  pull_request:
+    branches:
+      - main
+    paths:
+      - Containerfile
+      - .github/workflows/build.yml
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo ${{secrets.GITHUB_TOKEN}} | sudo podman login -u ${{github.actor}} --password-stdin ghcr.io
+        if: github.event_name != 'pull_request'
+      - run: sudo podman build --no-cache --layers=false -t ghcr.io/charles25565/calcite:latest-unoptimized .
+      - run: sudo podman run --privileged -v /var/lib/containers:/var/lib/containers quay.io/centos-bootc/centos-bootc:stream10 /usr/libexec/bootc-base-imagectl rechunk ghcr.io/charles25565/calcite:latest-unoptimized ghcr.io/charles25565/calcite:latest
+      - run: sudo podman push ghcr.io/charles25565/calcite:latest
+        if: github.event_name != 'pull_request'
