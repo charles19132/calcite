@@ -19,7 +19,7 @@ jobs:
     name: Build
     runs-on: ubuntu-24.04
     permissions:
-      contents: write
+      packages: write
     steps:
       - uses: actions/checkout@v4
       - run: echo ${{secrets.GITHUB_TOKEN}} | sudo podman login -u ${{github.actor}} --password-stdin ghcr.io
