@@ -24,6 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: echo ${{secrets.GITHUB_TOKEN}} | sudo podman login -u ${{github.actor}} --password-stdin ghcr.io
         if: github.event_name != 'pull_request'
+      - run: sudo podman pull ghcr.io/charles25565/unified-bootc-images:r10
       - run: sudo podman build --no-cache --layers=false -t ghcr.io/charles25565/calcite:latest-unoptimized .
       - run: sudo podman run --privileged -v /var/lib/containers:/var/lib/containers ghcr.io/charles25565/unified-bootc-images:r10 /usr/libexec/bootc-base-imagectl rechunk ghcr.io/charles25565/calcite:latest-unoptimized ghcr.io/charles25565/calcite:latest
       - run: sudo podman push ghcr.io/charles25565/calcite:latest
