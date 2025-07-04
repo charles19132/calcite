@@ -47,7 +47,7 @@ EOF
 Now that we have everything ready, we can build the ISO image.
 
 ```bash
-mkksiso -a container ks.cfg base.iso calcite.iso
+sudo mkksiso -a container ks.cfg base.iso calcite.iso
 ```
 
 ## Flashing the ISO
