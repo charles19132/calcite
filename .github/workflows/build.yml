@@ -13,6 +13,9 @@ on:
     paths:
       - Containerfile
       - .github/workflows/build.yml
+  schedule:
+    - cron: '0 4 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
