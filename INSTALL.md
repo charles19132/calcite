@@ -25,7 +25,7 @@ curl -o base.iso https://download.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-
 This will download the container using skopeo.
 
 ```bash
-skopeo copy docker://ghcr.io/charles25565/calcite:main oci:container
+skopeo copy docker://ghcr.io/charles25565/calcite:latest oci:container
 ```
 
 ## Creating the kickstart
@@ -37,7 +37,7 @@ cat > ks.cfg <<EOF
 ostreecontainer --url /run/install/repo/container --transport oci --no-signature-verification
 
 %post --erroronfail
-bootc switch --mutate-in-place --transport registry ghcr.io/charles25565/calcite:main
+bootc switch --mutate-in-place --transport registry ghcr.io/charles25565/calcite:latest
 %end
 EOF
 ```
