@@ -1,6 +1,6 @@
 # Installation with Anaconda
 
-This guide assumes you are already on a Fedora 40+ or EL10+ system. Calcite itself won't work.
+This guide assumes you are already on a Fedora 41+ or EL10+ system. Calcite itself won't work.
 
 ## Installing mkksiso, skopeo and curl
 
@@ -58,4 +58,4 @@ You can use your favorite tool to flash the ISO we have created. If you are usin
 
 After booting the ISO, you can now install it like any other EL-like distro.
 
-Note that the packages settings will be missing because `ostreecontainer` causes them to be hidden.
+Note that the packages settings will be missing because `ostreecontainer` hides them.
