@@ -7,7 +7,7 @@ Calcite is a simple bootc image with GNOME.
 
 ## Pre-built image
 
-You can use this: `quay.io/charles2/calcite:latest`.
+You can use this: `ghcr.io/charles19132/calcite:main`.
 
 ## Building
 
