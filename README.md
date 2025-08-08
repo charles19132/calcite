@@ -25,4 +25,4 @@ sudo podman build -t localhost/calcite:latest .
 
 You should be able to deploy it in any manner you like.
 
-You can find an in depth installation guide using Anaconda [here](INSTALL.md).
+You can download an ISO image with Anaconda [here](https://nightly.link/charles19132/calcite/workflows/build/main/iso.zip).

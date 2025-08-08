@@ -19,3 +19,27 @@ jobs:
       - run: podman build --no-cache -t "ghcr.io/charles19132/calcite:latest" .
       - run: podman push ghcr.io/charles19132/calcite:latest
         if: github.event_name != 'pull_request'
+  iso:
+    runs-on: ubuntu-24.04
+    container:
+      image: "quay.io/centos/centos:stream10"
+      options: --privileged
+    needs: build
+    steps:
+      - run: dnf install lorax util-linux skopeo curl --allowerasing -y
+      - run: curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
+      - run: skopeo copy docker://ghcr.io/charles19132/calcite:latest oci:container
+      - name: Create kickstart 
+        run: |
+          cat > ks.cfg <<EOF
+          ostreecontainer --url /run/install/repo/container --transport oci --no-signature-verification
+
+          %post --erroronfail
+          bootc switch --mutate-in-place --transport registry ghcr.io/charles19132/calcite:latest
+          %end
+          EOF
+      - run: mkksiso -a container ks.cfg base.iso calcite.iso
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iso
+          path: calcite.iso
