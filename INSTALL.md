@@ -25,7 +25,7 @@ curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/Ce
 This will download the container using skopeo.
 
 ```bash
-skopeo copy docker://ghcr.io/charles19132/calcite:main oci:container
+skopeo copy docker://ghcr.io/charles19132/calcite:latest oci:container
 ```
 
 ## Creating the kickstart
@@ -37,7 +37,7 @@ cat > ks.cfg <<EOF
 ostreecontainer --url /run/install/repo/container --transport oci --no-signature-verification
 
 %post --erroronfail
-bootc switch --mutate-in-place --transport registry ghcr.io/charles19132/calcite:main
+bootc switch --mutate-in-place --transport registry ghcr.io/charles19132/calcite:latest
 %end
 EOF
 ```
