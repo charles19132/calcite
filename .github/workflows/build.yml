@@ -22,12 +22,12 @@ jobs:
   iso:
     runs-on: ubuntu-24.04
     container:
-      image: "quay.io/centos/centos:stream10"
+      image: "quay.io/rockylinux/rockylinux:10"
       options: --privileged
     needs: build
     steps:
       - run: dnf install lorax util-linux skopeo curl --allowerasing -y
-      - run: curl -o base.iso https://mirror.stream.centos.org/10-stream/BaseOS/x86_64/iso/CentOS-Stream-10-latest-x86_64-boot.iso
+      - run: curl -o base.iso https://dl.rockylinux.org/pub/rocky/10/isos/x86_64/Rocky-10-latest-x86_64-boot.iso
       - run: skopeo copy docker://ghcr.io/charles19132/calcite:latest oci:container
       - name: Create kickstart 
         run: |

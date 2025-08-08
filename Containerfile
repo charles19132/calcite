@@ -1,4 +1,4 @@
-FROM quay.io/centos-bootc/centos-bootc:stream10
+FROM ghcr.io/charles19132/rocky-bootc:10
 RUN (grep -q "cpe:/o:centos:centos:10" /etc/os-release && (rm -rf /etc/yum.repos.d/* && curl -o /etc/yum.repos.d/cs.repo "https://gitlab.com/redhat/centos-stream/containers/bootc/-/raw/c10s/cs.repo?ref_type=heads") || true) && \
     (grep -q "cpe:/o:centos:centos:9" /etc/os-release && (rm -rf /etc/yum.repos.d/* && curl -o /etc/yum.repos.d/cs.repo "https://gitlab.com/redhat/centos-stream/containers/bootc/-/raw/c9s/cs.repo?ref_type=heads") || true) && \
     dnf group install workstation-product-environment -y --allowerasing -x rootfiles && \
