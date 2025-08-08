@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 */2 * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "${{secrets.GITHUB_TOKEN}}" | podman login -u "${{github.actor}}" --password-stdin ghcr.io
+      - run: podman build --no-cache -t "ghcr.io/charles19132/calcite:latest" .
+      - run: podman push ghcr.io/charles19132/calcite:latest
+        if: github.event_name != 'pull_request'
