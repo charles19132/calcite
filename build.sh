@@ -14,7 +14,7 @@ done
 dnf group install workstation-product-environment -y --allowerasing -x rootfiles
 # Fix for Fedora
 grep -q "ID=fedora" /etc/os-release && \
-  (echo Detected Fedora. Installing fedora-release-ostree-desktop. 1>&2
+  (echo "Detected Fedora. Installing fedora-release-ostree-desktop." 1>&2
   dnf install fedora-release-ostree-desktop -y) \
   || true
 dnf remove console-login-helper-messages{,-profile} PackageKit{,-command-not-found} -y
